@@ -1,126 +1,34 @@
+// Importa os módulos necessários
 const express = require('express');
-const cors = require('cors');
-const fs = require('fs').promises;
 const path = require('path');
-const crypto = require('crypto');
 
+// Inicializa o aplicativo Express
 const app = express();
-// --- CONFIGURAÇÕES DO SERVIDOR ---
-const PORT = 3000;
-const HOST = '0.0.0.0'; 
-const DADOS_FILE = path.join(__dirname, 'dados.json');
 
-// --- Middlewares ---
-// Habilita CORS para permitir que o frontend acesse a API
-app.use(cors());
-// Habilita o parsing de JSON no corpo das requisições
-app.use(express.json());
+// Define a porta. É MUITO IMPORTANTE usar process.env.PORT para o Render
+const PORT = process.env.PORT || 3000;
 
-// --- Servir arquivos estáticos (HTML, CSS, etc.) ---
-// Permite que o servidor encontre e envie o arquivo Pesquisa.html
-app.use(express.static(__dirname));
+// ROTA PRINCIPAL: Servir o arquivo index.html (seu front-end)
+// Quando alguém acessar a URL raiz ('/'), este código será executado.
+app.get('/', (req, res) => {
+  // Envia o arquivo 'index.html' que está no mesmo diretório
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
-// --- Funções Auxiliares para Manipulação de Dados ---
-async function lerDados() {
-  try {
-    const dados = await fs.readFile(DADOS_FILE, 'utf-8');
-    return JSON.parse(dados);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      // Se o arquivo não existe, cria um com uma lista vazia
-      await escreverDados({ processes: [] });
-      return { processes: [] };
+// ROTA DA API: Servir o arquivo processos.json
+// Quando o front-end fizer uma requisição para '/api/processos', este código será executado.
+app.get('/api/processos', (req, res) => {
+  // Envia o arquivo 'processos.json' que está no mesmo diretório
+  res.sendFile(path.join(__dirname, 'processos.json'), (err) => {
+    if (err) {
+      // Se houver um erro (ex: arquivo não encontrado), envia uma resposta de erro
+      console.error('Erro ao enviar o arquivo JSON:', err);
+      res.status(404).json({ error: "Arquivo de dados não encontrado." });
     }
-    throw error;
-  }
-}
-
-async function escreverDados(dados) {
-  await fs.writeFile(DADOS_FILE, JSON.stringify(dados, null, 2), 'utf-8');
-}
-
-// --- Rotas da API (Endpoints) ---
-
-// [GET] /processes - Listar todos os processos
-app.get('/processes', async (req, res) => {
-  try {
-    const dados = await lerDados();
-    res.status(200).json(dados.processes || []);
-  } catch (error) {
-    console.error('Erro em GET /processes:', error);
-    res.status(500).json({ error: 'Erro interno no servidor ao ler dados.' });
-  }
+  });
 });
 
-// [POST] /processes - Adicionar um novo processo
-app.post('/processes', async (req, res) => {
-  try {
-    const novoProcesso = req.body;
-    const dados = await lerDados();
-    
-    // Gera um ID hexadecimal único
-    let novoId;
-    do {
-      novoId = crypto.randomBytes(2).toString('hex');
-    } while (dados.processes.some(p => p.id === novoId));
-
-    novoProcesso.id = novoId;
-    dados.processes.push(novoProcesso);
-    await escreverDados(dados);
-    
-    res.status(201).json(novoProcesso);
-  } catch (error) {
-    console.error('Erro em POST /processes:', error);
-    res.status(500).json({ error: 'Erro interno no servidor ao salvar dados.' });
-  }
-});
-
-// [PUT] /processes/:id - Atualizar um processo existente
-app.put('/processes/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const dadosAtualizados = req.body;
-    const dados = await lerDados();
-    
-    const index = dados.processes.findIndex(p => p.id === id);
-
-    if (index !== -1) {
-      dados.processes[index] = { ...dadosAtualizados, id };
-      await escreverDados(dados);
-      res.status(200).json(dados.processes[index]);
-    } else {
-      res.status(404).json({ error: 'Processo não encontrado.' });
-    }
-  } catch (error) {
-    console.error(`Erro em PUT /processes/${req.params.id}:`, error);
-    res.status(500).json({ error: 'Erro interno no servidor ao atualizar dados.' });
-  }
-});
-
-// [DELETE] /processes/:id - Excluir um processo
-app.delete('/processes/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const dados = await lerDados();
-    const tamanhoOriginal = dados.processes.length;
-
-    dados.processes = dados.processes.filter(p => p.id !== id);
-
-    if (dados.processes.length < tamanhoOriginal) {
-      await escreverDados(dados);
-      res.status(204).send();
-    } else {
-      res.status(404).json({ error: 'Processo não encontrado.' });
-    }
-  } catch (error) {
-    console.error(`Erro em DELETE /processes/${req.params.id}:`, error);
-    res.status(500).json({ error: 'Erro interno no servidor ao excluir dados.' });
-  }
-});
-
-// --- Iniciar o Servidor ---
-app.listen(PORT, HOST, () => {
-  console.log(`Servidor Node.js rodando na porta ${PORT} e acessível na sua rede.`);
-  console.log('Para acessar, use o IP da sua máquina. Ex: http://SEU_IP_LOCAL:3000/Pesquisa.html');
-  console.log('Pressione CTRL+C para parar o servidor.');
+// Inicia o servidor para escutar as requisições na porta definida
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
