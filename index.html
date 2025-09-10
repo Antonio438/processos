@@ -1,410 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa de Processos</title>
-    <style>
-        /* Estilos gerais */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        h1 {
-            margin-top: 0;
-            font-size: 28px;
-            color: #003366;
-            text-align: center;
-        }
-        
-        /* Contêineres de Ação (Adicionar e Pesquisar) */
-        .action-container {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px; /* Espaçamento moderno */
-            flex-wrap: wrap;
-        }
-        .action-container input {
-            flex: 1 1 150px; /* Permite que os inputs quebrem a linha de forma inteligente */
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .action-container button {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
-        }
-        .action-container button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-        
-        /* Tabela */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 4px;
-            overflow: hidden; /* Garante que o border-radius funcione */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #003366;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:not(.row-saving):hover { /* Evita o hover durante o salvamento */
-            background-color: #eaeaea;
-        }
-        
-        /* --- NOVOS ESTILOS PARA FEEDBACK VISUAL --- */
-        .row-saving { background-color: #fffbe6 !important; /* Amarelo: salvando */ }
-        .row-success { background-color: #d4edda !important; /* Verde: sucesso */ }
-        .row-error { background-color: #f8d7da !important; /* Vermelho: erro */ }
-
-        .no-results {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 350px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        .modal-button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .modal-button:hover {
-            background-color: #0056b3;
-        }
-        #confirmDelete { background-color: #dc3545; } /* Botão de confirmação vermelho */
-        #confirmDelete:hover { background-color: #c82333; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carregar Processos</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Pesquisa de Processos - 2025</h1>
-        
-        <div class="action-container">
-            <input type="text" id="newProcessPC" placeholder="P.C" aria-label="P.C">
-            <input type="text" id="newProcessFornecedor" placeholder="Fornecedor" aria-label="Fornecedor">
-            <input type="text" id="newProcessModalidade" placeholder="Modalidade" aria-label="Modalidade">
-            <input type="text" id="newProcessNumMod" placeholder="N° Mod" aria-label="N° Mod">
-            <input type="text" id="newProcessInfo" placeholder="Informações" aria-label="Informações">
-            <button id="addProcessButton">Adicionar</button>
-        </div>
 
-        <div class="action-container">
-            <input type="text" id="search" placeholder="Pesquisar em todos os campos..." aria-label="Campo de pesquisa" oninput="filterTable()">
-            <button id="resetButton">Limpar</button>
-        </div>
-        
-        <table id="processTable" aria-describedby="noResults">
-            <thead>
-                <tr>
-                    <th scope="col">P.C</th>
-                    <th scope="col">FORNECEDOR</th>
-                    <th scope="col">MODALIDADE</th>
-                    <th scope="col">N° MOD</th>
-                    <th scope="col">INFORMAÇÕES</th>
-                    <th scope="col">AÇÕES</th>
-                </tr>
-            </thead>
-            <tbody>
-                </tbody>
-        </table>
+  <h1>Dados dos Processos</h1>
+  <p>Abra o console do navegador (F12) para ver os dados carregados.</p>
+  <pre id="dados-container"></pre>
 
-        <div id="noResults" class="no-results" style="display: none;">Nenhum resultado encontrado.</div>
-    </div>
+  <script>
+    // Função para buscar os dados da nossa API
+    async function carregarProcessos() {
+      try {
+        // AQUI ESTÁ A MÁGICA:
+        // A requisição é feita para '/api/processos'.
+        // O navegador automaticamente entende que é para o mesmo servidor de onde esta página veio.
+        const response = await fetch('/api/processos');
 
-    <div id="deleteModal" class="modal">
-        <div class="modal-content">
-            <p><strong>Você tem certeza que deseja excluir este processo?</strong></p>
-            <p>Esta ação não pode ser desfeita.</p>
-            <button id="confirmDelete" class="modal-button">Sim, Excluir</button>
-            <button id="cancelDelete" class="modal-button">Não</button>
-        </div>
-    </div>
-
-   <script>
-    // --- CONSTANTE GLOBAL PARA O ENDEREÇO DO SERVIDOR ---
-    // AJUSTE: Usando location.origin para ser mais flexível, pegando protocolo, host e porta.
-    const API_URL = `${window.location.origin}`;
-
-    // --- VARIÁVEIS GLOBAIS ---
-    let processToDeleteId = null; 
-
-    // --- EVENTOS INICIAIS ---
-    document.addEventListener('DOMContentLoaded', () => {
-        setupEventListeners(); 
-        loadProcesses();      
-    });
-
-    /**
-     * @description Centraliza a configuração de todos os listeners de eventos.
-     */
-    function setupEventListeners() {
-        document.getElementById('addProcessButton').addEventListener('click', addProcess);
-        document.getElementById('resetButton').addEventListener('click', () => {
-            document.getElementById('search').value = '';
-            filterTable();
-        });
-        document.getElementById('confirmDelete').addEventListener('click', deleteProcess);
-        document.getElementById('cancelDelete').addEventListener('click', hideModal);
-        
-        const modal = document.getElementById('deleteModal');
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                hideModal();
-            }
-        });
-    }
-
-    // --- FUNÇÕES DO MODAL DE CONFIRMAÇÃO ---
-    function showDeleteModal(processId) {
-        processToDeleteId = processId;
-        document.getElementById('deleteModal').style.display = 'block';
-    }
-
-    function hideModal() {
-        processToDeleteId = null;
-        document.getElementById('deleteModal').style.display = 'none';
-    }
-
-    // --- FUNÇÕES DE MANIPULAÇÃO DE DADOS (CRUD) ---
-
-    /**
-     * @description Função centralizada para fazer requisições fetch.
-     * @param {string} endpoint - O endpoint da API (ex: '/processes').
-     * @param {object} options - As opções da requisição (method, headers, body).
-     * @returns {Promise<any>} - A resposta da API em JSON.
-     */
-    async function apiRequest(endpoint, options = {}) {
-        try {
-            const response = await fetch(`${API_URL}${endpoint}`, options);
-            if (!response.ok) {
-                const errorBody = await response.text();
-                throw new Error(`Erro na rede: ${response.status} ${response.statusText} - ${errorBody}`);
-            }
-            // Retorna a resposta JSON apenas se houver conteúdo
-            const contentType = response.headers.get("content-type");
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                return response.json();
-            }
-            return null; // Para respostas sem corpo, como DELETE
-        } catch (error) {
-            console.error('Falha na requisição API:', error);
-            throw error; // Propaga o erro para ser tratado por quem chamou
-        }
-    }
-
-    async function loadProcesses() {
-        try {
-            const processes = await apiRequest('/processes');
-            processes.sort((a, b) => parseInt(a.pc) - parseInt(b.pc));
-            
-            const tableBody = document.getElementById("processTable").querySelector('tbody');
-            tableBody.innerHTML = ''; 
-
-            processes.forEach(process => {
-                const row = tableBody.insertRow();
-                row.dataset.id = process.id;
-
-                row.innerHTML = `
-                    <td contenteditable="true" data-field="pc">${process.pc || ''}</td>
-                    <td contenteditable="true" data-field="fornecedor">${process.fornecedor || ''}</td>
-                    <td contenteditable="true" data-field="modalidade">${process.modalidade || ''}</td>
-                    <td contenteditable="true" data-field="numMod">${process.numMod || ''}</td>
-                    <td contenteditable="true" data-field="info">${process.info || ''}</td>
-                    <td><button class="deleteButton">Excluir</button></td>
-                `;
-
-                // AJUSTE: Lógica de edição mais segura
-                row.querySelectorAll('td[contenteditable="true"]').forEach(cell => {
-                    let originalValue = cell.textContent;
-
-                    cell.addEventListener('focus', () => {
-                        originalValue = cell.textContent;
-                    });
-                    
-                    cell.addEventListener('blur', () => {
-                        if (cell.textContent !== originalValue) {
-                            updateProcess(row, cell, originalValue);
-                        }
-                    });
-                });
-
-                row.querySelector('.deleteButton').addEventListener('click', () => showDeleteModal(process.id));
-            });
-            filterTable();
-        } catch (error) {
-            const noResults = document.getElementById("noResults");
-            noResults.textContent = 'Erro ao carregar dados. Verifique se o servidor está rodando.';
-            noResults.style.display = 'block';
-        }
-    }
-
-    async function addProcess() {
-        const pc = document.getElementById('newProcessPC').value.trim();
-        if (!pc) {
-            alert('O campo P.C. é obrigatório.');
-            return;
+        // Verifica se a requisição foi bem-sucedida (status 200-299)
+        if (!response.ok) {
+          throw new Error(`Erro na rede: ${response.status}`);
         }
 
-        const newProcess = {
-            pc,
-            fornecedor: document.getElementById('newProcessFornecedor').value.trim(),
-            modalidade: document.getElementById('newProcessModalidade').value.trim(),
-            numMod: document.getElementById('newProcessNumMod').value.trim(),
-            info: document.getElementById('newProcessInfo').value.trim(),
-        };
+        // Converte a resposta para JSON
+        const dados = await response.json();
 
-        try {
-            await apiRequest('/processes', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newProcess),
-            });
-            
-            // Limpa os campos
-            document.getElementById('newProcessPC').value = '';
-            document.getElementById('newProcessFornecedor').value = '';
-            document.getElementById('newProcessModalidade').value = '';
-            document.getElementById('newProcessNumMod').value = '';
-            document.getElementById('newProcessInfo').value = '';
-            
-            loadProcesses(); // Recarrega a lista
-        } catch (error) {
-            alert('Ocorreu um erro ao tentar adicionar o processo.');
-        }
+        // Exibe os dados no console para verificação
+        console.log('Dados recebidos com sucesso:', dados);
+
+        // Opcional: Exibe os dados formatados na página
+        document.getElementById('dados-container').textContent = JSON.stringify(dados, null, 2);
+
+      } catch (error) {
+        console.error('Falha na requisição API:', error);
+        document.getElementById('dados-container').textContent = `Erro ao carregar dados: ${error.message}`;
+      }
     }
 
-    async function deleteProcess() {
-        if (!processToDeleteId) return;
+    // Chama a função quando a página terminar de carregar
+    document.addEventListener('DOMContentLoaded', carregarProcessos);
+  </script>
 
-        const confirmButton = document.getElementById('confirmDelete');
-        confirmButton.disabled = true;
-        confirmButton.textContent = 'Excluindo...';
-
-        try {
-            await apiRequest(`/processes/${processToDeleteId}`, { method: 'DELETE' });
-            hideModal();
-            loadProcesses();
-        } catch (error) {
-            alert('Ocorreu um erro ao tentar excluir o processo.');
-            hideModal();
-        } finally {
-            confirmButton.disabled = false;
-            confirmButton.textContent = 'Sim, Excluir';
-        }
-    }
-    
-    async function updateProcess(row, cell, originalValue) {
-        const id = row.dataset.id;
-        const updatedProcess = {
-            pc:         row.cells[0].textContent,
-            fornecedor: row.cells[1].textContent,
-            modalidade: row.cells[2].textContent,
-            numMod:     row.cells[3].textContent,
-            info:       row.cells[4].textContent
-        };
-
-        // AJUSTE: Feedback visual para o usuário
-        row.classList.add('row-saving');
-
-        try {
-            await apiRequest(`/processes/${id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updatedProcess)
-            });
-            
-            row.classList.remove('row-saving');
-            row.classList.add('row-success');
-            setTimeout(() => row.classList.remove('row-success'), 2000); // Remove o destaque após 2 segundos
-            
-        } catch (error) {
-            console.error('Erro ao atualizar processo:', error);
-            // AJUSTE: Restaura o valor original em caso de erro
-            cell.textContent = originalValue; 
-            
-            row.classList.remove('row-saving');
-            row.classList.add('row-error');
-            setTimeout(() => row.classList.remove('row-error'), 3000);
-            
-            alert('Ocorreu um erro ao salvar as alterações.');
-        }
-    }
-
-    // --- FUNÇÃO DE UTILIDADE ---
-    function filterTable() {
-        const filterText = document.getElementById('search').value.toLowerCase();
-        const rows = document.getElementById('processTable').querySelector('tbody').rows;
-        const noResultsDiv = document.getElementById('noResults');
-        let visibleRowCount = 0;
-
-        for (const row of rows) {
-            const isVisible = row.textContent.toLowerCase().includes(filterText);
-            row.style.display = isVisible ? '' : 'none';
-            if (isVisible) {
-                visibleRowCount++;
-            }
-        }
-
-        noResultsDiv.style.display = visibleRowCount === 0 ? 'block' : 'none';
-    }
-   </script>
 </body>
 </html>
