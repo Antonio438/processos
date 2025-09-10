@@ -1,0 +1,692 @@
+{
+  "processes": [
+    {
+      "pc": "01",
+      "fornecedor": "Processo Tássia desconto judicial",
+      "modalidade": "EXTRA",
+      "numMod": "DESCONTO JUDICIAL",
+      "info": "",
+      "id": "5dc7"
+    },
+    {
+      "pc": "02",
+      "fornecedor": "Restituição tickets refeição ",
+      "modalidade": "EXTRA",
+      "numMod": "PREFEITURA",
+      "info": "",
+      "id": "bb3f"
+    },
+    {
+      "pc": "03",
+      "fornecedor": "Prefeitura Municipal de Embu-Guaçu",
+      "modalidade": "EXTRA",
+      "numMod": "PREFEITURA",
+      "info": "IRRFONTE SERV VEREADORES",
+      "id": "58ef"
+    },
+    {
+      "pc": "04",
+      "fornecedor": "INSS - Instituto Nacional de Seguro Social ",
+      "modalidade": "EXTRA",
+      "numMod": "INSS",
+      "info": "",
+      "id": "ba04"
+    },
+    {
+      "pc": "05",
+      "fornecedor": "Folha de pagamento servidores / vereadores ",
+      "modalidade": "Pgto pessoal ",
+      "numMod": "-",
+      "info": "-",
+      "id": "0e8d"
+    },
+    {
+      "pc": "06",
+      "fornecedor": "Prefeitura Municipal",
+      "modalidade": "Duodécimos ",
+      "numMod": "PREFEITURA",
+      "info": "-",
+      "id": "bbcb"
+    },
+    {
+      "pc": "07",
+      "fornecedor": "",
+      "modalidade": "DISPENSA",
+      "numMod": "",
+      "info": "",
+      "id": "7933"
+    },
+    {
+      "pc": "08",
+      "fornecedor": "SABESP- Comp. Saneamento Básico ",
+      "modalidade": "DISPENSA",
+      "numMod": "",
+      "info": "17028",
+      "id": "6e9f"
+    },
+    {
+      "pc": "09",
+      "fornecedor": "ELETROPAULO Metrop. Elet. de São Paulo",
+      "modalidade": "DISPENSA",
+      "numMod": "",
+      "info": "17002 ",
+      "id": "32b1"
+    },
+    {
+      "pc": "10",
+      "fornecedor": "PRODESP- Companhia de Processamento ",
+      "modalidade": "DISPENSA",
+      "numMod": "",
+      "info": "17099 ",
+      "id": "68bf"
+    },
+    {
+      "pc": "11",
+      "fornecedor": "PATRICK",
+      "modalidade": "EXTRA",
+      "numMod": "PENSAO ALIMENTICIA",
+      "info": "",
+      "id": "e5da"
+    },
+    {
+      "pc": "12",
+      "fornecedor": "",
+      "modalidade": "DISPENSA",
+      "numMod": "",
+      "info": "",
+      "id": "5555"
+    },
+    {
+      "pc": "13",
+      "fornecedor": "VTLOG Inter. de Negócios e Benefícios ",
+      "modalidade": "DISPENSA",
+      "numMod": "",
+      "info": "",
+      "id": "382b"
+    },
+    {
+      "pc": "14",
+      "fornecedor": "-",
+      "modalidade": "-",
+      "numMod": "-",
+      "info": "-",
+      "id": "4a33"
+    },
+    {
+      "pc": "15",
+      "fornecedor": "GILSON CINTRA",
+      "modalidade": "-",
+      "numMod": "-",
+      "info": "-",
+      "id": "62b1"
+    },
+    {
+      "pc": "16",
+      "fornecedor": "RENDIMENTOS APLICACOES FINANCEIRAS",
+      "modalidade": "EXTRA",
+      "numMod": "RENDIMENTOS",
+      "info": "",
+      "id": "50a2"
+    },
+    {
+      "pc": "17",
+      "fornecedor": "MONITORE SOLUES EM TI LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00020/2024",
+      "info": "",
+      "id": "33cd"
+    },
+    {
+      "pc": "18",
+      "fornecedor": "FORLI SERVIÇOS EMPRESARIAIS",
+      "modalidade": "PREGÃO",
+      "numMod": "E00009/2024",
+      "info": "desconta ISS E INSS",
+      "id": "f722"
+    },
+    {
+      "pc": "19",
+      "fornecedor": "INTEGRA  ASSESSORIA EM SERVIÇOS LTDA",
+      "modalidade": "PREGAO",
+      "numMod": "",
+      "info": "17031",
+      "id": "48e7"
+    },
+    {
+      "pc": "20",
+      "fornecedor": "EDUARDO HAGIHARA LAMDIM DA SILVA",
+      "modalidade": "PREGAO ",
+      "numMod": "E00008/2024",
+      "info": "",
+      "id": "7f08"
+    },
+    {
+      "pc": "21",
+      "fornecedor": "GENESIS GERACAO DE NOVAS EMPRESAS DE SISTEMAS",
+      "modalidade": "PREGÃO",
+      "numMod": "E00006/2023",
+      "info": "simples nacional , mas desconta ISS",
+      "id": "e6d3"
+    },
+    {
+      "pc": "22",
+      "fornecedor": "A.M.S DA SILVA SOM EVENTOS",
+      "modalidade": "DISPENSA",
+      "numMod": "S00002/2024",
+      "info": "CNPJ 19505475000105",
+      "id": "5a69"
+    },
+    {
+      "pc": "23",
+      "fornecedor": "LIZ SERVIÇOS ONLINE LTDA",
+      "modalidade": "INEXIGIBILIDADE",
+      "numMod": "I00004/2024",
+      "info": "17035",
+      "id": "8c72"
+    },
+    {
+      "pc": "24",
+      "fornecedor": "J OLIVEIRA IMPORTAÇÃO E EXPORTAÇÃO EIRELI",
+      "modalidade": "DISPENSA",
+      "numMod": "S00001/2024",
+      "info": "não optante N.R 17009",
+      "id": "348b"
+    },
+    {
+      "pc": "25",
+      "fornecedor": "CONAM CONSUL. EM  ADMINISTRAÇÃO LTDA",
+      "modalidade": "INEXIGIBILIDADE",
+      "numMod": "I00005/2024",
+      "info": "17099",
+      "id": "c7ad"
+    },
+    {
+      "pc": "26",
+      "fornecedor": "KTREE TECNOLOGIA DA INFORMAÇÃO LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00002/2024",
+      "info": "17099",
+      "id": "eff9"
+    },
+    {
+      "pc": "27",
+      "fornecedor": "SUPORT COMERCIAL E SERVICOS EIRELI",
+      "modalidade": "DISPENSA",
+      "numMod": "S00003/2024",
+      "info": "",
+      "id": "1878"
+    },
+    {
+      "pc": "28",
+      "fornecedor": "RMP DISTRIBUIDORA LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00003/2024",
+      "info": "",
+      "id": "6952"
+    },
+    {
+      "pc": "29",
+      "fornecedor": "ENOVE SOLUÇÕES EM COMUNICAÇÃO LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00004/2024",
+      "info": "",
+      "id": "878e"
+    },
+    {
+      "pc": "30",
+      "fornecedor": "LUIZ CARLOS GUIMARAES",
+      "modalidade": "DISPENSA",
+      "numMod": "S00005/2024",
+      "info": "",
+      "id": "aa66"
+    },
+    {
+      "pc": "31",
+      "fornecedor": " JOSE HENRIQUE DOS ANJOS SOUZA",
+      "modalidade": "INEXIGIBILIDADE",
+      "numMod": "I00006/2024",
+      "info": "IRRF P.F ALUGUEIS OU ROYALTIES",
+      "id": "ef99"
+    },
+    {
+      "pc": "32",
+      "fornecedor": "EDERSON DE OLIVEIRA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00006/2024",
+      "info": "",
+      "id": "3220"
+    },
+    {
+      "pc": "33",
+      "fornecedor": "AQUAJET",
+      "modalidade": "DISPENSA",
+      "numMod": "S00007/2024",
+      "info": "",
+      "id": "b567"
+    },
+    {
+      "pc": "34",
+      "fornecedor": "GRIFON DIGITAL SERVIÇOS",
+      "modalidade": "DISPENSA",
+      "numMod": "S00011/2024",
+      "info": "",
+      "id": "39d5"
+    },
+    {
+      "pc": "35",
+      "fornecedor": "ENCADERNADORA D'CASTRO",
+      "modalidade": "DISPENSA",
+      "numMod": "S00014/2024",
+      "info": "",
+      "id": "aa17"
+    },
+    {
+      "pc": "36",
+      "fornecedor": "DIG FIRE EXTINTORES ",
+      "modalidade": "DISPENSA",
+      "numMod": "S00016/2024",
+      "info": "",
+      "id": "e183"
+    },
+    {
+      "pc": "37",
+      "fornecedor": "DINA ARAUJO DE MELO ",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 02/25",
+      "info": "",
+      "id": "184c"
+    },
+    {
+      "pc": "39 ",
+      "fornecedor": "TELEFÔNICA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00005/2023",
+      "info": "17029",
+      "id": "5553"
+    },
+    {
+      "pc": "40",
+      "fornecedor": "IVONE BEGLIOMINI",
+      "modalidade": "DISPENSA",
+      "numMod": "S10015/2022",
+      "info": "",
+      "id": "70d0"
+    },
+    {
+      "pc": "41",
+      "fornecedor": "ALPIK COMÉRCIO DE ALIMENTOS",
+      "modalidade": "DISPENSA",
+      "numMod": "S00019/2024",
+      "info": "",
+      "id": "0068"
+    },
+    {
+      "pc": "42",
+      "fornecedor": "AMIGGO BRASIL IMPORTAÇÃO LTDA",
+      "modalidade": "PREGÃO",
+      "numMod": "E00010/2024",
+      "info": "62",
+      "id": "6f9b"
+    },
+    {
+      "pc": "43",
+      "fornecedor": "PRODUTO DIGITAL LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00022/2024",
+      "info": "",
+      "id": "ded8"
+    },
+    {
+      "pc": "44",
+      "fornecedor": "REEMBOLSO JAQUELINE",
+      "modalidade": "",
+      "numMod": "",
+      "info": "",
+      "id": "82c2"
+    },
+    {
+      "pc": "45",
+      "fornecedor": "SERANTONI E LIMA VIGILANCIA E SEGURANÇA",
+      "modalidade": "PREGÃO ",
+      "numMod": "00007/2023",
+      "info": "",
+      "id": "28ca"
+    },
+    {
+      "pc": "46",
+      "fornecedor": "",
+      "modalidade": "",
+      "numMod": "",
+      "info": "",
+      "id": "1ec3"
+    },
+    {
+      "pc": "47",
+      "fornecedor": "BD INFORMÁTICA LTDA",
+      "modalidade": "PREGÃO",
+      "numMod": "E00005/2024",
+      "info": "",
+      "id": "56ca"
+    },
+    {
+      "pc": "48",
+      "fornecedor": "PATRICIA OLIVEIRA SILVA",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 01/25",
+      "info": "",
+      "id": "421c"
+    },
+    {
+      "pc": "49",
+      "fornecedor": "CIEE",
+      "modalidade": "DISPENSA ",
+      "numMod": "S00013/2023",
+      "info": "",
+      "id": "5ca0"
+    },
+    {
+      "pc": "50",
+      "fornecedor": " UNIMOVEIS INDUSTRIA E COMERCIO DE MOVEIS",
+      "modalidade": "PREGÃO",
+      "numMod": "E00002/2024",
+      "info": "",
+      "id": "0bb6"
+    },
+    {
+      "pc": "51",
+      "fornecedor": "DINA ARAÚJO DE MELO",
+      "modalidade": "ADIANTAMENTO ",
+      "numMod": "ADTO 03/25",
+      "info": "",
+      "id": "9627"
+    },
+    {
+      "pc": "52",
+      "fornecedor": "CONSIGNADO CAIXA ",
+      "modalidade": "EXTRA",
+      "numMod": "CONSIGNADO",
+      "info": "CAIXA",
+      "id": "75ee"
+    },
+    {
+      "pc": "53",
+      "fornecedor": "TELES SOLUCOES EMPRESARIAS",
+      "modalidade": "PREGAO",
+      "numMod": "E00008/2023",
+      "info": "ALIMENTOS",
+      "id": "49c4"
+    },
+    {
+      "pc": "54",
+      "fornecedor": "GERS SERVIÇOS TECNICOS DE ARQUITETURA E ENGENHARIA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00017/2023",
+      "info": "",
+      "id": "7773"
+    },
+    {
+      "pc": "55",
+      "fornecedor": "SOMADATTADA INFORMATICA LTDA",
+      "modalidade": "PREGAO",
+      "numMod": "S0007/2024",
+      "info": "",
+      "id": "d88d"
+    },
+    {
+      "pc": "56",
+      "fornecedor": "FOCUS SERVICOS DE CONTROLE DE PRAGAS",
+      "modalidade": "DISPENSA",
+      "numMod": "S00001/205",
+      "info": "",
+      "id": "dfe5"
+    },
+    {
+      "pc": "57",
+      "fornecedor": "GDA DISTRIBUICAO LTDA",
+      "modalidade": "PREGAO",
+      "numMod": "E00001/2024",
+      "info": "",
+      "id": "404a"
+    },
+    {
+      "pc": "58",
+      "fornecedor": "EPT COMERCIO E SERVICOS LTDA ME",
+      "modalidade": "PREGÃO",
+      "numMod": "E00001/2024",
+      "info": "",
+      "id": "71e2"
+    },
+    {
+      "pc": "59",
+      "fornecedor": "EMPRESA BRASILEIRA DE CORREIOS E TELEFGRAFOS ",
+      "modalidade": "INEXIGIBILIDADE",
+      "numMod": "I00001-2025",
+      "info": "",
+      "id": "2f81"
+    },
+    {
+      "pc": "60",
+      "fornecedor": "SUNA SERVIÇOS  DIVE.RSOLS LTDA",
+      "modalidade": "PREGÃO",
+      "numMod": "E0001/2025",
+      "info": "",
+      "id": "2d42"
+    },
+    {
+      "pc": "61",
+      "fornecedor": "LARISSA LIMA DA SILVA ",
+      "modalidade": "EXTRA",
+      "numMod": "PENSAO ALIMENTICIA",
+      "info": "",
+      "id": "bce1"
+    },
+    {
+      "pc": "62",
+      "fornecedor": "CAIXA ECONOMICA FEDERAL",
+      "modalidade": "DISPENSA",
+      "numMod": "DISPENSA",
+      "info": "",
+      "id": "d829"
+    },
+    {
+      "pc": "63",
+      "fornecedor": "LUIZ FERNANDO FERREIRA DOS SANTOS",
+      "modalidade": "ADIANTAMENTO ",
+      "numMod": "ADTO 04/25",
+      "info": "",
+      "id": "90f2"
+    },
+    {
+      "pc": "64",
+      "fornecedor": "TASSIA ALVES LUZ ANDRADE",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 05/25",
+      "info": "BOBINA RELOGIO DE PONTO - BROCHE",
+      "id": "76c1"
+    },
+    {
+      "pc": "65",
+      "fornecedor": "FELIPE RIBEIRO DE FARIAS",
+      "modalidade": "ADIANTAMENTO ",
+      "numMod": "ADTO 06/25",
+      "info": "VAIAGEM A BRASILIA",
+      "id": "1303"
+    },
+    {
+      "pc": "67",
+      "fornecedor": "DARLU INDUSTRIA TEXTIL LTDA",
+      "modalidade": "PREGAO",
+      "numMod": "E00003/2025",
+      "info": "GENEROS DE ALENTICIOS",
+      "id": "5057"
+    },
+    {
+      "pc": "68",
+      "fornecedor": "AGHA ATACADO LTDA",
+      "modalidade": "PREGAO",
+      "numMod": "E00003/2025",
+      "info": "",
+      "id": "c824"
+    },
+    {
+      "pc": "69",
+      "fornecedor": "Prefeitura Municipal de Embu-Guaçu",
+      "modalidade": "RESTOS A PAGAR",
+      "numMod": "",
+      "info": "CANCELAMENTO DIVERSOS",
+      "id": "9cef"
+    },
+    {
+      "pc": "70",
+      "fornecedor": "RAPHAEL CARVALHO OLIVERIA",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 07/25",
+      "info": "VIAGEM MONTE MOR",
+      "id": "559a"
+    },
+    {
+      "pc": "71",
+      "fornecedor": "FELIPE NUNES QUINONES",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 08/25",
+      "info": "VIAGEM A BRASILIA",
+      "id": "12f2"
+    },
+    {
+      "pc": "72",
+      "fornecedor": "FAQUI SEGURANÇA LTDA",
+      "modalidade": "PREGÃO ",
+      "numMod": "E00004/2025",
+      "info": "SEGURANÇA NOTURNA",
+      "id": "3c4e"
+    },
+    {
+      "pc": "73",
+      "fornecedor": "DENTECK LTDA",
+      "modalidade": "PREGAO",
+      "numMod": "E00002/2025",
+      "info": "INSTALAÇÃO DE AR CONDICIONADO",
+      "id": "b88e"
+    },
+    {
+      "pc": "74",
+      "fornecedor": "KEVELEN RAMOS SILVA",
+      "modalidade": "EXTRA",
+      "numMod": "PENSAO ALIMENTÍCIA",
+      "info": "",
+      "id": "8eac"
+    },
+    {
+      "pc": "75",
+      "fornecedor": "AGNALDO PEREIRA DE CAMARGO",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 09/25",
+      "info": "CERTIFICADO DIGITAL",
+      "id": "9981"
+    },
+    {
+      "pc": "76",
+      "fornecedor": "DINA ARAUJO DE MELO",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 10/25",
+      "info": "CONSERTO DE VAZAMENTO DE AGUA",
+      "id": "fed8"
+    },
+    {
+      "pc": "77",
+      "fornecedor": "NADIA DE MORAES SCHUNCK GUEDES",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 04/25",
+      "info": "VAIGEM A BRASILIA",
+      "id": "ec22"
+    },
+    {
+      "pc": "78",
+      "fornecedor": "CONSTRUART EMBU GUACU MAT. PARA CONSTRUCAO",
+      "modalidade": "DISPENSA",
+      "numMod": "S00002/2025",
+      "info": "",
+      "id": "364e"
+    },
+    {
+      "pc": "79",
+      "fornecedor": "LRS ENGENHARIA E CONSTRUÇÃO LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00002/2025",
+      "info": "",
+      "id": "9ade"
+    },
+    {
+      "pc": "080",
+      "fornecedor": "NOSSA COMERCIAL LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00006/2025",
+      "info": "",
+      "id": "b487"
+    },
+    {
+      "pc": "081",
+      "fornecedor": "VO NINO EMBALAGENS LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00006/2025",
+      "info": "",
+      "id": "022a"
+    },
+    {
+      "pc": "082",
+      "fornecedor": "GLOBALSUPRI DISTTRIBUIDORA E SERVIÇOS  LTDA",
+      "modalidade": "DISPENSA",
+      "numMod": "S00006/2025",
+      "info": "",
+      "id": "a121"
+    },
+    {
+      "pc": "083",
+      "fornecedor": "FABIO VELOSO DE OLIVEIRA",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 013/25",
+      "info": "VIAGEM A BRASILIA",
+      "id": "448b"
+    },
+    {
+      "pc": "084",
+      "fornecedor": "KENDEN KARLA DE JESUS ANDRADE",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 014/25",
+      "info": "VIAGEM A BRASILIA",
+      "id": "e298"
+    },
+    {
+      "pc": "087",
+      "fornecedor": "ASTMA SERVIÇOS COMBINADOS E TREINAMENTOS",
+      "modalidade": "DISPENSA",
+      "numMod": "S00005/2025",
+      "info": "SERVIÇO MEDICO",
+      "id": "799c"
+    },
+    {
+      "id": "ec60",
+      "pc": "088",
+      "fornecedor": "DINA ARAUJO DE MELO",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 015/25",
+      "info": "PLACA DE MESA"
+    },
+    {
+      "pc": "89",
+      "fornecedor": "FELIPE  RIBEIRO DE FARIAS",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 016/15",
+      "info": "VIAGEM A BRASILIA",
+      "id": "111f"
+    },
+    {
+      "pc": "90",
+      "fornecedor": "DINA ARAÚJO DE MELO ",
+      "modalidade": "ADIANTAMENTO",
+      "numMod": "ADTO 017/25",
+      "info": "",
+      "id": "c773"
+    }
+  ]
+}
