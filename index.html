@@ -3,50 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa de Processos</title>
+    <title>Gestor de Processos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Pesquisa de Processos - 2025</h1>
+        <header>
+            <h1>Gestor de Processos - 2025</h1>
+        </header>
         
-        <div class="add-process-container">
-            <input type="text" id="newProcessPC" placeholder="P.C" aria-label="P.C">
-            <input type="text" id="newProcessFornecedor" placeholder="Fornecedor" aria-label="Fornecedor">
-            <input type="text" id="newProcessModalidade" placeholder="Modalidade" aria-label="Modalidade">
-            <input type="text" id="newProcessNumMod" placeholder="N° Mod" aria-label="N° Mod">
-            <input type="text" id="newProcessInfo" placeholder="Informações" aria-label="Informações">
-            <button id="addProcessButton">Adicionar</button>
-        </div>
+        <main>
+            <div class="card add-process-card">
+                <h2>Adicionar Novo Processo</h2>
+                <div class="add-process-container">
+                    <input type="text" id="newProcessPC" placeholder="P.C" aria-label="P.C">
+                    <input type="text" id="newProcessFornecedor" placeholder="Fornecedor" aria-label="Fornecedor">
+                    <input type="text" id="newProcessModalidade" placeholder="Modalidade" aria-label="Modalidade">
+                    <input type="text" id="newProcessNumMod" placeholder="N° Mod" aria-label="N° Mod">
+                    <input type="text" id="newProcessInfo" placeholder="Informações" aria-label="Informações">
+                    <button id="addProcessButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2z"/>
+                        </svg>
+                        Adicionar
+                    </button>
+                </div>
+            </div>
 
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Pesquise por processo, fornecedor ou outras informações..." aria-label="Campo de pesquisa">
-            <button id="resetButton">Limpar</button>
-        </div>
-        
-        <table id="processTable" aria-describedby="noResults">
-            <thead>
-                <tr>
-                    <th scope="col">P.C</th>
-                    <th scope="col">FORNECEDOR</th>
-                    <th scope="col">MODALIDADE</th>
-                    <th scope="col">N° MOD</th>
-                    <th scope="col">INFORMAÇÕES</th>
-                    <th scope="col">AÇÕES</th>
-                </tr>
-            </thead>
-            <tbody>
-                </tbody>
-        </table>
+            <div class="card process-list-card">
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="Pesquisar em todos os campos..." aria-label="Campo de pesquisa">
+                    <button id="resetButton" class="secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L14.5 7.793a1 1 0 0 0 0-1.414L10.914 2.8a1 1 0 0 0-1.414 0l-6.879 6.879a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
+                        </svg>
+                        Limpar
+                    </button>
+                </div>
+                
+                <div class="table-wrapper">
+                    <table id="processTable" aria-describedby="noResults">
+                        <thead>
+                            <tr>
+                                <th scope="col">P.C</th>
+                                <th scope="col">FORNECEDOR</th>
+                                <th scope="col">MODALIDADE</th>
+                                <th scope="col">N° MOD</th>
+                                <th scope="col">INFORMAÇÕES</th>
+                                <th scope="col">AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
 
-        <div id="noResults" class="no-results" style="display: none;">Nenhum resultado encontrado.</div>
+                <div id="noResults" class="no-results" style="display: none;">Nenhum resultado encontrado.</div>
+            </div>
+        </main>
     </div>
 
     <div id="deleteModal" class="modal">
         <div class="modal-content">
-            <p>Você realmente deseja excluir este processo?</p>
-            <button id="confirmDelete" class="modal-button">Sim</button>
-            <button id="cancelDelete" class="modal-button">Não</button>
+            <h3>Confirmar Exclusão</h3>
+            <p>Você tem certeza de que deseja excluir este processo? Esta ação não pode ser desfeita.</p>
+            <div class="modal-actions">
+                <button id="cancelDelete" class="modal-button secondary">Cancelar</button>
+                <button id="confirmDelete" class="modal-button danger">Sim, Excluir</button>
+            </div>
         </div>
     </div>
 
