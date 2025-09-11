@@ -1,48 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carregar Processos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Processos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Pesquisa de Processos - 2025</h1>
+        
+        <div class="add-process-container">
+            <input type="text" id="newProcessPC" placeholder="P.C" aria-label="P.C">
+            <input type="text" id="newProcessFornecedor" placeholder="Fornecedor" aria-label="Fornecedor">
+            <input type="text" id="newProcessModalidade" placeholder="Modalidade" aria-label="Modalidade">
+            <input type="text" id="newProcessNumMod" placeholder="N° Mod" aria-label="N° Mod">
+            <input type="text" id="newProcessInfo" placeholder="Informações" aria-label="Informações">
+            <button id="addProcessButton">Adicionar</button>
+        </div>
 
-  <h1>Dados dos Processos</h1>
-  <p>Abra o console do navegador (F12) para ver os dados carregados.</p>
-  <pre id="dados-container"></pre>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Pesquise por processo, fornecedor ou outras informações..." aria-label="Campo de pesquisa">
+            <button id="resetButton">Limpar</button>
+        </div>
+        
+        <table id="processTable" aria-describedby="noResults">
+            <thead>
+                <tr>
+                    <th scope="col">P.C</th>
+                    <th scope="col">FORNECEDOR</th>
+                    <th scope="col">MODALIDADE</th>
+                    <th scope="col">N° MOD</th>
+                    <th scope="col">INFORMAÇÕES</th>
+                    <th scope="col">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
 
-  <script>
-    // Função para buscar os dados da nossa API
-    async function carregarProcessos() {
-      try {
-        // AQUI ESTÁ A MÁGICA:
-        // A requisição é feita para '/api/processos'.
-        // O navegador automaticamente entende que é para o mesmo servidor de onde esta página veio.
-        const response = await fetch('/api/processos');
+        <div id="noResults" class="no-results" style="display: none;">Nenhum resultado encontrado.</div>
+    </div>
 
-        // Verifica se a requisição foi bem-sucedida (status 200-299)
-        if (!response.ok) {
-          throw new Error(`Erro na rede: ${response.status}`);
-        }
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <p>Você realmente deseja excluir este processo?</p>
+            <button id="confirmDelete" class="modal-button">Sim</button>
+            <button id="cancelDelete" class="modal-button">Não</button>
+        </div>
+    </div>
 
-        // Converte a resposta para JSON
-        const dados = await response.json();
-
-        // Exibe os dados no console para verificação
-        console.log('Dados recebidos com sucesso:', dados);
-
-        // Opcional: Exibe os dados formatados na página
-        document.getElementById('dados-container').textContent = JSON.stringify(dados, null, 2);
-
-      } catch (error) {
-        console.error('Falha na requisição API:', error);
-        document.getElementById('dados-container').textContent = `Erro ao carregar dados: ${error.message}`;
-      }
-    }
-
-    // Chama a função quando a página terminar de carregar
-    document.addEventListener('DOMContentLoaded', carregarProcessos);
-  </script>
-
+   <script src="script.js"></script>
 </body>
 </html>
