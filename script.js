@@ -8,7 +8,7 @@ let processToDeleteId = null; // Armazena o ID do processo a ser excluído.
 // --- EVENTOS INICIAIS ---
 window.onload = () => {
     setupEventListeners(); // Configura todos os eventos da página.
-    loadProcesses();      // Carrega os processos do servidor.
+    loadProcesses();       // Carrega os processos do servidor.
 };
 
 /**
@@ -23,6 +23,8 @@ function setupEventListeners() {
     });
     document.getElementById('confirmDelete').addEventListener('click', deleteProcess);
     document.getElementById('cancelDelete').addEventListener('click', hideModal);
+    
+    // Listener para fechar o modal ao clicar fora da área de conteúdo.
     window.addEventListener('click', (event) => {
         const modal = document.getElementById('deleteModal');
         if (event.target == modal) {
@@ -31,18 +33,37 @@ function setupEventListeners() {
     });
 }
 
-// --- FUNÇÕES DO MODAL DE CONFIRMAÇÃO ---
+// --- FUNÇÕES DO MODAL DE CONFIRMAÇÃO (COM ANIMAÇÃO) ---
+/**
+ * @description Exibe o modal de confirmação de exclusão com uma animação suave.
+ * @param {string} processId - O ID do processo a ser excluído.
+ */
 function showDeleteModal(processId) {
     processToDeleteId = processId;
-    document.getElementById('deleteModal').style.display = 'block';
+    const modal = document.getElementById('deleteModal');
+    modal.style.display = 'flex'; // Usamos 'flex' para centralizar o conteúdo.
+    setTimeout(() => { // Um pequeno atraso para garantir que a transição CSS seja aplicada.
+        modal.classList.add('visible');
+    }, 10);
 }
 
+/**
+ * @description Esconde o modal de confirmação com uma animação suave.
+ */
 function hideModal() {
     processToDeleteId = null;
-    document.getElementById('deleteModal').style.display = 'none';
+    const modal = document.getElementById('deleteModal');
+    modal.classList.remove('visible');
+    // Espera a animação de fade-out terminar antes de esconder o elemento.
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300); // Este tempo deve ser o mesmo da transição definida no CSS.
 }
 
 // --- FUNÇÕES DE MANIPULAÇÃO DE DADOS (CRUD) ---
+/**
+ * @description Carrega os processos do servidor e os exibe na tabela.
+ */
 function loadProcesses() {
     fetch(`${API_URL}/processes`)
         .then(response => {
@@ -52,9 +73,11 @@ function loadProcesses() {
             return response.json();
         })
         .then(processes => {
+            // Ordena os processos pelo campo 'pc' numericamente.
             processes.sort((a, b) => parseInt(a.pc) - parseInt(b.pc));
+            
             const tableBody = document.getElementById("processTable").getElementsByTagName('tbody')[0];
-            tableBody.innerHTML = ''; 
+            tableBody.innerHTML = ''; // Limpa a tabela antes de adicionar os novos dados.
 
             processes.forEach(process => {
                 const row = tableBody.insertRow();
@@ -66,18 +89,20 @@ function loadProcesses() {
                     <td contenteditable="true" data-field="modalidade">${process.modalidade || ''}</td>
                     <td contenteditable="true" data-field="numMod">${process.numMod || ''}</td>
                     <td contenteditable="true" data-field="info">${process.info || ''}</td>
-                    <td><button class="deleteButton">Excluir</button></td>
+                    <td><button class="danger deleteButton">Excluir</button></td>
                 `;
 
+                // Adiciona um listener para salvar as alterações quando o usuário sai do campo.
                 row.querySelectorAll('td[contenteditable="true"]').forEach(cell => {
                     cell.addEventListener('blur', () => updateProcess(row));
                 });
 
+                // Adiciona um listener para o botão de excluir da linha.
                 row.querySelector('.deleteButton').addEventListener('click', () => {
                     showDeleteModal(process.id);
                 });
             });
-            filterTable();
+            filterTable(); // Aplica o filtro atual após carregar os dados.
         })
         .catch(error => {
             console.error('Erro ao carregar os processos:', error);
@@ -87,6 +112,9 @@ function loadProcesses() {
         });
 }
 
+/**
+ * @description Adiciona um novo processo ao servidor.
+ */
 function addProcess() {
     const pc = document.getElementById('newProcessPC').value.trim();
     const fornecedor = document.getElementById('newProcessFornecedor').value.trim();
@@ -111,12 +139,13 @@ function addProcess() {
         return response.json();
     })
     .then(() => {
+        // Limpa os campos de input após a adição.
         document.getElementById('newProcessPC').value = '';
         document.getElementById('newProcessFornecedor').value = '';
         document.getElementById('newProcessModalidade').value = '';
         document.getElementById('newProcessNumMod').value = '';
         document.getElementById('newProcessInfo').value = '';
-        loadProcesses();
+        loadProcesses(); // Recarrega a lista para mostrar o novo processo.
     })
     .catch(error => {
         console.error('Erro ao adicionar processo:', error);
@@ -124,6 +153,9 @@ function addProcess() {
     });
 }
 
+/**
+ * @description Exclui um processo do servidor usando o ID armazenado.
+ */
 function deleteProcess() {
     if (!processToDeleteId) return;
 
@@ -133,7 +165,7 @@ function deleteProcess() {
     .then(response => {
         if (!response.ok) throw new Error('Falha ao excluir o processo.');
         hideModal();
-        loadProcesses();
+        loadProcesses(); // Recarrega a lista para refletir a exclusão.
     })
     .catch(error => {
         console.error('Erro ao excluir processo:', error);
@@ -142,6 +174,10 @@ function deleteProcess() {
     });
 }
 
+/**
+ * @description Atualiza um processo no servidor quando uma célula da tabela é editada.
+ * @param {HTMLTableRowElement} row - A linha da tabela que foi modificada.
+ */
 function updateProcess(row) {
     const id = row.dataset.id;
     const cells = row.querySelectorAll('td[contenteditable="true"]');
@@ -169,11 +205,14 @@ function updateProcess(row) {
     .catch(error => {
         console.error('Erro ao atualizar processo:', error);
         alert('Ocorreu um erro ao salvar as alterações. A página será recarregada para garantir a consistência dos dados.');
-        loadProcesses();
+        loadProcesses(); // Recarrega os dados para reverter a alteração visual.
     });
 }
 
 // --- FUNÇÃO DE UTILIDADE ---
+/**
+ * @description Filtra as linhas da tabela com base no texto digitado no campo de pesquisa.
+ */
 function filterTable() {
     const filterText = document.getElementById('search').value.toLowerCase();
     const tableBody = document.getElementById('processTable').getElementsByTagName('tbody')[0];
@@ -182,6 +221,7 @@ function filterTable() {
     let visibleRowCount = 0;
 
     for (const row of rows) {
+        // Verifica se o texto do filtro está contido em qualquer lugar no texto da linha.
         if (row.textContent.toLowerCase().includes(filterText)) {
             row.style.display = '';
             visibleRowCount++;
@@ -190,5 +230,6 @@ function filterTable() {
         }
     }
 
+    // Mostra ou esconde a mensagem "Nenhum resultado encontrado".
     noResultsDiv.style.display = visibleRowCount === 0 && rows.length > 0 ? 'block' : 'none';
 }
