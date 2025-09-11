@@ -1,6 +1,6 @@
 // --- CONSTANTE GLOBAL PARA O ENDEREÇO DO SERVIDOR ---
 // O endereço é dinâmico e funciona em qualquer máquina da rede.
-const API_URL = `http://${window.location.hostname}:3000`;
+const API_URL = 'https://processos-onrender-com.onrender.com';
 
 // --- VARIÁVEIS GLOBAIS ---
 let processToDeleteId = null; // Armazena o ID do processo a ser excluído.
